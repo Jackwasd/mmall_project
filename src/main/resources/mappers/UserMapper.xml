@@ -166,6 +166,25 @@
     where username = #{username}
     and password = #{password}
   </select>
+  <select id="selectQuestionByUsername" resultType="string" parameterType="string">
+    select
+    question
+    from mmall_user
+    where username = #{username}
+  </select>
+  <select id="checkAnswer" resultType="int" parameterType="map">
+    select
+    COUNT(1)
+    from mmall_user
+    where username = #{username}
+    and question = #{question}
+    and answer = #{answer}
+  </select>
+  <update id = "updatePassworByUsername" parameterType="map">
+    update mmall_user
+    SET password = #{passwordNew}, update_time = now()
+    where username = #{username}
+  </update>
 </mapper>
 
 
